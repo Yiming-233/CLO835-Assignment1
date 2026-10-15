@@ -12,9 +12,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_mysql
-    image: my_db
+    image: ypan69/yp_db:v1
     environment:
-      MYSQL_ROOT_PASSWORD: pw
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
@@ -25,13 +25,13 @@ services:
 
   blue:
     build: .
-    image: my_app
+    image: ypan69/yp_app:v3
     ports: ["8081:8080"]
     environment: &app_env
       DBHOST: mysql-db
       DBPORT: "3306"
       DBUSER: root
-      DBPWD: pw
+      DBPWD: ${MYSQL_ROOT_PASSWORD}
       DATABASE: employees
       APP_COLOR: blue
     depends_on:
@@ -39,7 +39,7 @@ services:
         condition: service_healthy
 
   pink:
-    image: my_app
+    image: ypan69/yp_app:v3
     ports: ["8082:8080"]
     environment:
       <<: *app_env
@@ -49,7 +49,7 @@ services:
         condition: service_healthy
 
   lime:
-    image: my_app
+    image: ypan69/yp_app:v3
     ports: ["8083:8080"]
     environment:
       <<: *app_env
