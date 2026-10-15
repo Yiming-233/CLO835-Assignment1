@@ -53,11 +53,11 @@ Run the same image three times, on three host ports, with three colours.
 
 ```bash
 docker run -d --name blue --network clo835-a1 -p 8081:8080 -e APP_COLOR=blue \
-  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees my_app
+  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees ypan69/yp_app:v1
 docker run -d --name pink --network clo835-a1 -p 8082:8080 -e APP_COLOR=pink \
-  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees my_app
+  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees ypan69/yp_app:v1
 docker run -d --name lime --network clo835-a1 -p 8083:8080 -e APP_COLOR=lime \
-  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees my_app
+  -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=pw -e DATABASE=employees ypan69/yp_app:v1
 ```
 
 Test them.
